@@ -4,6 +4,7 @@ const Express = require('express');
 const router = Express.Router();
 const shortid = require('shortid');
 const Url = require('../models/Url');
+const requireLogin  = require('../middleware/authenticate')
 const env = require('dotenv')
 
 // configure environment variables.
@@ -16,7 +17,7 @@ function validateUrl(value) {
   }
 
 
-router.post("/short", async (request, response) => {
+router.post("/short", requireLogin, async (request, response) => {
     const {originalUrl} = request.body;
     const base = process.env.BASE;
 
@@ -50,7 +51,7 @@ router.post("/short", async (request, response) => {
 })
 
 
-router.get('/:Id', async (request, response) => {
+router.get('/:Id', requireLogin, async (request, response) => {
     try{
         const url = await Url.findOne({urlId: request.params.Id});
         if(url){

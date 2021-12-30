@@ -15,6 +15,9 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
   resetToken: String,
+  activationToken: String,
+  active: Boolean,
+  activationToken: String,
   expireToken: Date,
 });
 
