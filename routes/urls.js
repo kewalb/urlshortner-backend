@@ -3,7 +3,7 @@
 const Express = require("express");
 const router = Express.Router();
 const shortid = require("shortid");
-const Url = require("../models/Url");
+const Url = require("../models/url");
 const requireLogin = require("../middleware/authenticate");
 const env = require("dotenv");
 
