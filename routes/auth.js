@@ -57,7 +57,7 @@ router.post("/signup", async (request, response) => {
   }
   User.findOne({ email: email }).then((dbUser) => {
     if (dbUser) {
-      return response.status(422).json({ message: "Try with different email" });
+      return response.json({ message: "Try with different email" });
     }
     bcrypt.hash(password, 10).then(async (hashedPassword) => {
       const user = new User({

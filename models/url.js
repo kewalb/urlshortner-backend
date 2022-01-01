@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const UrlSchema = new mongoose.Schema({
+  user:{
+    type: String,
+    required: true,
+  },
   urlId: {
     type: String,
     required: true,
